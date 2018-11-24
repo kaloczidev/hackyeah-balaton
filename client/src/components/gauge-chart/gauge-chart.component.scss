@@ -1,0 +1,43 @@
+@import '../../styles/colors';
+
+$gauge-size: 150px;
+
+.gauge-container {
+  display: inline-block;
+  text-align: center;
+  color: $color-mediumGray-dark;
+  .gauge-label {
+    display: inline-block;
+    transform: translate(0, -20px);
+  }
+}
+
+::ng-deep {
+  mwl-gauge {
+    width: $gauge-size;
+    height: $gauge-size;
+    display: inline-block;
+  }
+
+  mwl-gauge > .gauge > .dial {
+    stroke: rgba(255, 255, 255, .3);
+    stroke-width: 2;
+    stroke-linecap: round;
+    fill: rgba(0, 0, 0, 0);
+  }
+
+  mwl-gauge > .gauge > .value {
+    stroke: $color-mint-light;
+    stroke-width: 6;
+    stroke-linecap: round;
+    fill: rgba(0, 0, 0, 0);
+  }
+
+  mwl-gauge > .gauge > .value-text {
+    fill: $color-mediumGray-light;
+    font-family: inherit;
+    font-weight: 300;
+    transform: translate(0, 8px);
+    font-size: 34px;
+  }
+}

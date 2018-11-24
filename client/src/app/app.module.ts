@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LineChartModule } from '../components/line-chart/line-chart.module';
+import { GaugeChartModule } from '../components/gauge-chart/gauge-chart.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { LineChartModule } from '../components/line-chart/line-chart.module';
   imports: [
     BrowserModule,
     LineChartModule,
+    GaugeChartModule,
     HttpClientModule,
   ],
   providers: [],

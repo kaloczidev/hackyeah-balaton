@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Input, NgModule } from '@angular/core';
 
 import { LineChartComponent } from './line-chart.component';
 import { ChartsModule } from 'ng2-charts';
