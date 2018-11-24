@@ -2,15 +2,20 @@ import { Pagination } from '../interfaces/pagination.interface';
 import { StoreId, StoreItemType } from '../interfaces/store.interface';
 
 export class Store<T extends StoreItemType> {
-  private items: Array<T> = [];
+  private items: Array<T>;
   private idCounter: number = 1;
 
-  add(item: Partial<T>): StoreId {
+  constructor(defaultItems?: Array<T>) {
+    this.items = defaultItems || [];
+  }
+
+  add(item: Partial<T>): T {
+
     if (!item.id) item.id = this.idCounter++;
 
     this.items = [].concat(this.items, item);
 
-    return item.id;
+    return this.items[this.items.length - 1];
   }
 
   remove(itemId: StoreId | null): number {

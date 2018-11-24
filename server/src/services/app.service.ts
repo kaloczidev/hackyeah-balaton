@@ -1,18 +1,16 @@
 import { Injectable } from '@nestjs/common';
 
-import { players, teams } from '../data/init-store';
-import { PlayerService } from './player.service';
-import { TeamService } from './team.service';
+import { measures, types } from '../data/init-data';
+import { MeasureService } from './measure.service';
+import { TypeService } from './type.service';
 
 @Injectable()
 export class AppService {
-  constructor(private playerService: PlayerService, private teamService: TeamService) {
+  constructor(private measureService: MeasureService, private typeService: TypeService) {
   }
 
   public initStore(): void {
-    // add each player to the Store
-    players.forEach(player => this.playerService.addPlayer(player));
-    // add each team to the Store
-    teams.forEach(team => this.teamService.addTeam(team));
+    measures.forEach(measure => this.measureService.add(measure));
+    types.forEach(type => this.typeService.add(type));
   }
 }

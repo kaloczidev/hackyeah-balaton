@@ -1,0 +1,30 @@
+
+# Get the types from the server
+GET http://localhost:3000/api/types
+
+###
+
+# Add a new type
+POST http://localhost:3000/api/types
+Content-Type: application/json
+
+{
+  "name": "Weight"
+}
+
+###
+
+# Modify an existing type
+PUT http://localhost:3000/api/types/1
+Content-Type: application/json
+
+{
+  "name": "Glucose"
+}
+
+###
+
+# Delete an existing type
+DELETE http://localhost:3000/api/types/1
+
+###

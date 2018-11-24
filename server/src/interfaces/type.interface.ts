@@ -1,6 +1,6 @@
 import { StoreId, StoreItemType } from './store.interface';
 
-export interface Team extends StoreItemType {
+export interface Type extends StoreItemType {
   id: StoreId;
   name: string;
 }
