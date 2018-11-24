@@ -1,11 +1,12 @@
 from cv2.cv2 import approxPolyDP, arcLength, findContours, contourArea, RETR_EXTERNAL, \
     CHAIN_APPROX_SIMPLE, morphologyEx, threshold, getStructuringElement, MORPH_ELLIPSE, THRESH_BINARY_INV, THRESH_OTSU, \
-    MORPH_OPEN
+    MORPH_OPEN, boundingRect
 from imutils import is_cv2
+from imutils.contours import sort_contours
 
 
-def get_approximate_of_contours(contours):
-    for contour in contours:
+def get_approximate_of_contours(im_contours):
+    for contour in im_contours:
         approximate = _get_approximate_of_contour(contour)
         # if the contour has four vertices, then we have found
         # the thermostat display
@@ -32,6 +33,34 @@ def get_treshold_of(image):
         MORPH_OPEN,
         getStructuringElement(MORPH_ELLIPSE, (1, 5))
     )
+
+
+def get_digit_contours(im_contours):
+
+    # generate list with contours in size
+    digit_contours = [
+        contour
+        for contour in im_contours
+        if _is_contour_in_size(contour)
+    ]
+    if digit_contours:
+        # sort the contours from left-to-right, then initialize the
+        # actual digits themselves
+        return sort_contours(
+            digit_contours,
+            method="left-to-right"
+        )
+    return digit_contours
+
+
+
+def get_digit_from_contour(contour):
+    pass
+
+
+def _is_contour_in_size(contour) -> bool:
+    (_, _, w, h) = boundingRect(contour)
+    return w >= 15 and 30 <= h <= 40
 
 
 def _get_approximate_of_contour(contour):
