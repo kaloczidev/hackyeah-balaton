@@ -7,12 +7,11 @@ DIGITS_PATH = os.path.abspath(
     )
 )
 
-
-def _load_digits():
+def load_digits():
     return load(DIGITS_PATH)
 
 
-def _get_digit_map(digit_json: dict):
+def get_digit_map(digit_json: dict):
     return {
         tuple(value): idx
         for idx, value in enumerate(digit_json)
