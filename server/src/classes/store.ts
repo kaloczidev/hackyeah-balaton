@@ -3,10 +3,11 @@ import { StoreId, StoreItemType } from '../interfaces/store.interface';
 
 export class Store<T extends StoreItemType> {
   private items: Array<T>;
-  private idCounter: number = 1;
+  private idCounter: number;
 
   constructor(defaultItems?: Array<T>) {
     this.items = defaultItems || [];
+    this.idCounter = this.items.length;
   }
 
   add(item: Partial<T>): T {

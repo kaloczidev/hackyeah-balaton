@@ -1,4 +1,4 @@
-import { Measure } from '../interfaces/measure.interface';
+import { Measurement } from '../interfaces/measurement.interface';
 import { Type } from '../interfaces/type.interface';
 
 export const types: Array<Type> = [
@@ -12,7 +12,7 @@ export const types: Array<Type> = [
   },
 ];
 
-export const measures: Array<Measure> = [
+export const measurements: Array<Measurement> = [
   {
     id: 0,
     type: types[0].id,

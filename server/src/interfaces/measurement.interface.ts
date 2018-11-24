@@ -1,6 +1,6 @@
 import { StoreId, StoreItemType } from './store.interface';
 
-export interface Measure extends StoreItemType {
+export interface Measurement extends StoreItemType {
   id: StoreId;
   type?: StoreId | null;
   time: number;
