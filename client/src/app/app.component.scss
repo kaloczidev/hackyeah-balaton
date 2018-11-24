@@ -1,0 +1,18 @@
+.layout {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "layout-sidebar layout-main";
+}
+
+.sidebar {
+  grid-area: layout-sidebar;
+}
+
+.main {
+  grid-area: layout-main;
+  min-height: 100px;
+  overflow: auto;
+}
