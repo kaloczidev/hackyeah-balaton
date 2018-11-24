@@ -1,12 +1,1 @@
-<div>
-  <canvas baseChart width="600" height="300"
-          [datasets]="chartValues | async"
-          [labels]="chartLabels | async"
-          [options]="lineChartOptions"
-          [colors]="lineChartStyle"
-          [chartType]="'line'"
-          #canvas
-  ></canvas>
-</div>
-
-<button (click)="randomize()">random</button>
+<chart type="line" [data]="chartData | async" [options]="options"></chart>

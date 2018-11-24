@@ -1,13 +1,13 @@
-import { Input, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { LineChartComponent } from './line-chart.component';
-import { ChartsModule } from 'ng2-charts';
+import { ChartModule } from 'angular2-chartjs';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
     CommonModule,
-    ChartsModule,
+    ChartModule,
   ],
   declarations: [LineChartComponent],
   exports: [LineChartComponent]

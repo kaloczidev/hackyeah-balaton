@@ -5,7 +5,6 @@ $gauge-size: 150px;
 .gauge-container {
   display: inline-block;
   text-align: center;
-  color: $color-mediumGray-dark;
   .gauge-label {
     display: inline-block;
     transform: translate(0, -20px);
@@ -20,24 +19,23 @@ $gauge-size: 150px;
   }
 
   mwl-gauge > .gauge > .dial {
-    stroke: rgba(255, 255, 255, .3);
-    stroke-width: 2;
-    stroke-linecap: round;
+    stroke: $color-mediumGray-light;
+    stroke-width: 1;
     fill: rgba(0, 0, 0, 0);
   }
 
   mwl-gauge > .gauge > .value {
-    stroke: $color-mint-light;
+    stroke: $color-aqua-dark;
     stroke-width: 6;
     stroke-linecap: round;
     fill: rgba(0, 0, 0, 0);
   }
 
   mwl-gauge > .gauge > .value-text {
-    fill: $color-mediumGray-light;
     font-family: inherit;
+    fill: $color-darkGray-dark;
     font-weight: 300;
-    transform: translate(0, 8px);
-    font-size: 34px;
+    transform: translate(0, 10px);
+    font-size: 38px;
   }
 }

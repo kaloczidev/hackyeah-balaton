@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LineChartModule } from '../components/line-chart/line-chart.module';
 import { GaugeChartModule } from '../components/gauge-chart/gauge-chart.module';
+import { BoxModule } from '../components/box/box.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { GaugeChartModule } from '../components/gauge-chart/gauge-chart.module';
     LineChartModule,
     GaugeChartModule,
     HttpClientModule,
+    BoxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

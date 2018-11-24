@@ -1,7 +1,12 @@
 <div class="layout">
-  <div class="sidebar">A</div>
+  <div class="sidebar">
+    blood type: 0rh+<br>
+    gender: male
+  </div>
   <div class="main">
-    <app-gauge-chart></app-gauge-chart>
+    <app-box>
+      <app-gauge-chart></app-gauge-chart>
+    </app-box>
     <app-line-chart [data]="data | async"></app-line-chart>
   </div>
 </div>

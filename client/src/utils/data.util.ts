@@ -1,8 +1,10 @@
 import * as Moment from 'moment';
+
 import { DATA_FORMAT } from '../configuration';
+import { MeasurementType } from '../enums/measurement-type.enum';
 
 export class DataUtil {
-  static prepare(data: any[], type: number) {
+  static prepare(data: any[], type: MeasurementType) {
     const filteredData = {values: [], labels: []};
 
     for (const item of data)
