@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { DataUtil } from '../utils/data.util';
+import { API_HOST } from '../configuration';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +13,13 @@ import { BehaviorSubject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  data = new BehaviorSubject({
-    labels: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
-    values: [2, 9, 5, 3, 7, 8, 2, 3, 2, 9, 5, 3, 7, 8, 2, 3],
-  });
+  data = new BehaviorSubject({labels: [], values: []});
+
+  constructor(private http: HttpClient) {
+    this.http.get(`${API_HOST}/api/measurements`).subscribe((response: any[]) => {
+      const data = DataUtil.prepare(response, 1);
+      this.data.next(data);
+      console.log(data);
+    });
+  }
 }
