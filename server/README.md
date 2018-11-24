@@ -1,6 +1,6 @@
-# Football manager back end
+# HackYeah back end
 
-This is the back end for the football manager application.
+This is the back end for the HackYeah application.
 
 ## Installation
 
