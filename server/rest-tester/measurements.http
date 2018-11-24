@@ -15,7 +15,6 @@ Content-Type: application/json
 
 {
   "type": "weight",
-  "image" : "",
   "value": 1
 }
 

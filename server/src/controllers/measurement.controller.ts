@@ -33,8 +33,6 @@ export class MeasurementController {
   ): {updated: boolean} {
     this.logger.log(`.modifyMeasure() - Query param: ${JSON.stringify({id: pId})} - Body: ${JSON.stringify(data)}`);
 
-    if (typeof data.type === 'string') data.type = parseNumber(data.type);
-
     return {updated: this.measurementsService.modify(isNumeric(pId) ? parseInt(pId, 10) : null, data)};
   }
 

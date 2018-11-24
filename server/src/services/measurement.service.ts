@@ -22,9 +22,20 @@ export class MeasurementService {
     return this.store.getAll().slice(options.skip, (options.skip + 1) * options.limit);
   }
 
-  add(measurements: Partial<Measurement>): Measurement {
-    console.log(shell.exec('python3 --version', {silent: true}).stdout);
-    return this.store.add(measurements);
+  add(measurement: Partial<Measurement>): Measurement {
+
+    if (measurement.image) {
+      //const data =  measurements.image.replace(/^data:image\/png;base64,/, '');
+      //require("fs").writeFile('out.png', data, 'base64', (err) => console.log(err))}
+      const value = shell.exec('python3 ../recognition/__main__.py ' + measurement.image, {silent: true}).stdout;
+
+      measurement.value = value;
+
+      //clean image from the DB
+      delete measurement.image;
+    }
+
+    return this.store.add(measurement);
   }
 
   modify(measurementsId: number | null, data: Partial<Measurement>): boolean {

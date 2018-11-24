@@ -1,4 +1,3 @@
-import { Pagination } from '../interfaces/pagination.interface';
 import { StoreId, StoreItemType } from '../interfaces/store.interface';
 
 export class Store<T extends StoreItemType> {

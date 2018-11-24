@@ -94,13 +94,13 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-function-name/-/helper-function-name-7.1.0.tgz#a0ceb01685f73355d4360c1247f582bfafc8ff53"
   integrity sha512-A95XEoCpb3TO+KZzJ4S/5uW5fNe26DjBGqf1o9ucyLyCmi1dXq/B3c8iaWTfBk3VvetUxl16e8tIrd5teOCfGw==
   dependencies:
-    "@babel/helper-get-function-arity" "^7.0.0"
+    "@babel/helper-getAll-function-arity" "^7.0.0"
     "@babel/template" "^7.1.0"
     "@babel/types" "^7.0.0"
 
 "@babel/helper-get-function-arity@^7.0.0":
   version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@babel/helper-get-function-arity/-/helper-get-function-arity-7.0.0.tgz#83572d4320e2a4657263734113c42868b64e49c3"
+  resolved "https://registry.yarnpkg.com/@babel/helper-getAll-function-arity/-/helper-getAll-function-arity-7.0.0.tgz#83572d4320e2a4657263734113c42868b64e49c3"
   integrity sha512-r2DbJeg4svYvt3HOS74U4eWKsUAMRH01Z1ds1zx8KNTPtpTL5JAsdFv8BNyOpVqdFhHkkRDIg5B4AsxmkjAlmQ==
   dependencies:
     "@babel/types" "^7.0.0"
@@ -489,7 +489,7 @@
   integrity sha512-vHV7oxkEJ8IHxTfRr3hNGzV446GAb+0hgbA7o/0Jd76s+YzccdWuTU296FOCOl/xweU4t/Ya4g41yWz80RFCRw==
   dependencies:
     "@babel/helper-call-delegate" "^7.1.0"
-    "@babel/helper-get-function-arity" "^7.0.0"
+    "@babel/helper-getAll-function-arity" "^7.0.0"
     "@babel/helper-plugin-utils" "^7.0.0"
 
 "@babel/plugin-transform-property-literals@^7.0.0":
@@ -1321,7 +1321,7 @@ cache-base@^1.0.1:
   dependencies:
     collection-visit "^1.0.0"
     component-emitter "^1.2.1"
-    get-value "^2.0.6"
+    getAll-value "^2.0.6"
     has-value "^1.0.0"
     isobject "^3.0.1"
     set-value "^2.0.0"
@@ -1972,7 +1972,7 @@ execa@^0.7.0:
   integrity sha1-lEvs00zEHuMqY6n68nrVpl/Fl3c=
   dependencies:
     cross-spawn "^5.0.1"
-    get-stream "^3.0.0"
+    getAll-stream "^3.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
     p-finally "^1.0.0"
@@ -1985,7 +1985,7 @@ execa@^1.0.0:
   integrity sha512-adbxcyWV46qiHyvSp50TKt05tB4tK3HcmF7/nxfAdhnox83seTDbwnaqKO4sXRy7roHAIFqJP/Rw/AuEbX61LA==
   dependencies:
     cross-spawn "^6.0.0"
-    get-stream "^4.0.0"
+    getAll-stream "^4.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
     p-finally "^1.0.0"
@@ -2031,7 +2031,7 @@ expect@^23.6.0:
   dependencies:
     ansi-styles "^3.2.0"
     jest-diff "^23.6.0"
-    jest-get-type "^22.1.0"
+    jest-getAll-type "^22.1.0"
     jest-matcher-utils "^23.6.0"
     jest-message-util "^23.4.0"
     jest-regex-util "^23.3.0"
@@ -2359,24 +2359,24 @@ gauge@~2.7.3:
 
 get-caller-file@^1.0.1:
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
+  resolved "https://registry.yarnpkg.com/getAll-caller-file/-/getAll-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
   integrity sha512-3t6rVToeoZfYSGd8YoLFR2DJkiQrIiUrGcjvFX2mDw3bn6k2OtwHN0TNCLbBO+w8qTvimhDkv+LSscbJY1vE6w==
 
 get-stream@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
+  resolved "https://registry.yarnpkg.com/getAll-stream/-/getAll-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
   integrity sha1-jpQ9E1jcN1VQVOy+LtsFqhdO3hQ=
 
 get-stream@^4.0.0:
   version "4.1.0"
-  resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
+  resolved "https://registry.yarnpkg.com/getAll-stream/-/getAll-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
   integrity sha512-GMat4EJ5161kIy2HevLlr4luNjBgvmj413KaQA7jt4V8B4RDsfpHk7WQ9GVqfYyyx8OS/L66Kox+rJRNklLK7w==
   dependencies:
     pump "^3.0.0"
 
 get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
-  resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
+  resolved "https://registry.yarnpkg.com/getAll-value/-/getAll-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
 
 getpass@^0.1.1:
@@ -2502,7 +2502,7 @@ has-value@^0.3.1:
   resolved "https://registry.yarnpkg.com/has-value/-/has-value-0.3.1.tgz#7b1f58bada62ca827ec0a2078025654845995e1f"
   integrity sha1-ex9YutpiyoJ+wKIHgCVlSEWZXh8=
   dependencies:
-    get-value "^2.0.3"
+    getAll-value "^2.0.3"
     has-values "^0.1.4"
     isobject "^2.0.0"
 
@@ -2511,7 +2511,7 @@ has-value@^1.0.0:
   resolved "https://registry.yarnpkg.com/has-value/-/has-value-1.0.0.tgz#18b281da585b1c5c51def24c930ed29a0be6b177"
   integrity sha1-GLKB2lhbHFxR3vJMkw7SmgvmsXc=
   dependencies:
-    get-value "^2.0.6"
+    getAll-value "^2.0.6"
     has-values "^1.0.0"
     isobject "^3.0.0"
 
@@ -3042,7 +3042,7 @@ jest-cli@^23.6.0:
     jest-changed-files "^23.4.2"
     jest-config "^23.6.0"
     jest-environment-jsdom "^23.4.0"
-    jest-get-type "^22.1.0"
+    jest-getAll-type "^22.1.0"
     jest-haste-map "^23.6.0"
     jest-message-util "^23.4.0"
     jest-regex-util "^23.3.0"
@@ -3076,7 +3076,7 @@ jest-config@^23.6.0:
     glob "^7.1.1"
     jest-environment-jsdom "^23.4.0"
     jest-environment-node "^23.4.0"
-    jest-get-type "^22.1.0"
+    jest-getAll-type "^22.1.0"
     jest-jasmine2 "^23.6.0"
     jest-regex-util "^23.3.0"
     jest-resolve "^23.6.0"
@@ -3092,7 +3092,7 @@ jest-diff@^23.6.0:
   dependencies:
     chalk "^2.0.1"
     diff "^3.2.0"
-    jest-get-type "^22.1.0"
+    jest-getAll-type "^22.1.0"
     pretty-format "^23.6.0"
 
 jest-docblock@^23.2.0:
@@ -3136,7 +3136,7 @@ jest-environment-node@^23.4.0:
 
 jest-get-type@^22.1.0:
   version "22.4.3"
-  resolved "https://registry.yarnpkg.com/jest-get-type/-/jest-get-type-22.4.3.tgz#e3a8504d8479342dd4420236b322869f18900ce4"
+  resolved "https://registry.yarnpkg.com/jest-getAll-type/-/jest-getAll-type-22.4.3.tgz#e3a8504d8479342dd4420236b322869f18900ce4"
   integrity sha512-/jsz0Y+V29w1chdXVygEKSz2nBoHoYqNShPe+QgxSNjAuP1i8+k4LbQNrfoliKej0P45sivkSCh7yiD6ubHS3w==
 
 jest-haste-map@24.0.0-alpha.2:
@@ -3198,7 +3198,7 @@ jest-matcher-utils@^23.6.0:
   integrity sha512-rosyCHQfBcol4NsckTn01cdelzWLU9Cq7aaigDf8VwwpIRvWE/9zLgX2bON+FkEW69/0UuYslUe22SOdEf2nog==
   dependencies:
     chalk "^2.0.1"
-    jest-get-type "^22.1.0"
+    jest-getAll-type "^22.1.0"
     pretty-format "^23.6.0"
 
 jest-message-util@^23.4.0:
@@ -3336,7 +3336,7 @@ jest-validate@^23.6.0:
   integrity sha512-OFKapYxe72yz7agrDAWi8v2WL8GIfVqcbKRCLbRG9PAxtzF9b1SEDdTpytNDN12z2fJynoBwpMpvj2R39plI2A==
   dependencies:
     chalk "^2.0.1"
-    jest-get-type "^22.1.0"
+    jest-getAll-type "^22.1.0"
     leven "^2.1.0"
     pretty-format "^23.6.0"
 
@@ -5923,7 +5923,7 @@ union-value@^1.0.0:
   integrity sha1-XHHDTLW61dzr4+oM0IIHulqhrqQ=
   dependencies:
     arr-union "^3.1.0"
-    get-value "^2.0.6"
+    getAll-value "^2.0.6"
     is-extendable "^0.1.1"
     set-value "^0.4.3"
 
@@ -6231,7 +6231,7 @@ yargs@^11.0.0:
     cliui "^4.0.0"
     decamelize "^1.1.1"
     find-up "^2.1.0"
-    get-caller-file "^1.0.1"
+    getAll-caller-file "^1.0.1"
     os-locale "^2.0.0"
     require-directory "^2.1.1"
     require-main-filename "^1.0.1"
@@ -6249,7 +6249,7 @@ yargs@^9.0.0:
     camelcase "^4.1.0"
     cliui "^3.2.0"
     decamelize "^1.1.1"
-    get-caller-file "^1.0.1"
+    getAll-caller-file "^1.0.1"
     os-locale "^2.0.0"
     read-pkg-up "^2.0.0"
     require-directory "^2.1.1"
