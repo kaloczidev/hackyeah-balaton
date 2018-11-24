@@ -9,8 +9,8 @@ export enum MeasurementTypes {
 export interface Measurement extends StoreItemType {
   id: StoreId;
   type: MeasurementTypes;
-  time: number;
-  image: string;
+  time: number | string | Date;
+  image?: string;
   value: number;
 }
 

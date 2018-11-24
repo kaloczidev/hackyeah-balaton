@@ -8,16 +8,18 @@ import { measurements } from '../data/init-data';
 @Injectable()
 export class MeasurementService {
   private store = new Store<Measurement>(measurements);
-  public static limit: number = 20;
-  private defaultOptions: MeasurementParams = {limit: 20, skip: 0, type: null};
+  private defaultOptions: MeasurementParams = {limit: 100, skip: 0, type: null};
 
   get(params: MeasurementParams): Array<Measurement> {
     const options = Object.assign({}, this.defaultOptions, params);
     if (options.type) {
-      return this.store.get(options).filter((item) => item.type === options.type)
+      return this.store
+        .getAll()
+        .filter((item) => item.type === options.type)
+        .slice(options.skip, (options.skip + 1) * options.limit)
     }
 
-    return this.store.get(options);
+    return this.store.getAll().slice(options.skip, (options.skip + 1) * options.limit);
   }
 
   add(measurements: Partial<Measurement>): Measurement {

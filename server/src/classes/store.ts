@@ -27,8 +27,8 @@ export class Store<T extends StoreItemType> {
     return Math.abs(itemSizeBeforeDelete - this.items.length);
   }
 
-  get(options: Pagination): Array<T> {
-    return this.items.slice(options.skip, (options.skip + 1) * options.limit);
+  getAll(): Array<T> {
+    return [...this.items];
   }
 
   modify(itemId: StoreId | null, data: Partial<T>): boolean {
