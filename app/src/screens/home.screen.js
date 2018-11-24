@@ -15,7 +15,7 @@ export default class HomeScreen extends Component {
     return (
       <SafeAreaView style={{...styles.view}}>
         <View style={{...STYLES.container, ...styles.container}}>
-          <Text style={{...STYLES.header, ...styles.header}}>HomeScreen</Text>
+          <Text style={{...STYLES.header, ...styles.header}}>boDiary</Text>
 
           <View>
           { TYPECONFIG.map( (item, index )=> {

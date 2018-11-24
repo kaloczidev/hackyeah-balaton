@@ -2,23 +2,37 @@ export const TYPECONFIG = [
   {
     name: "Glucose",
     unit: "mmol/l",
-    categories: ["breakfast", "lunch", "dinner"],
+    categories: ["before breakfast", 'after breakfast', "before lunch", 'after lunch', "before dinner", 'after dinner'],
     range: {
       from: 2,
       to: 20,
       step: 0.1
     },
-    color: '#f40c87',
-    url: '/glucose'
+    color: '#f857a6',
+    gradient: {
+      from: '#f857a6',
+      to: '#ff5858'
+    },
+    url: 'glucose'
   },{
     name: "Weight",
     unit: "kg",
     categories: ["morning", "noon", "night"],
-    color: '#0c7cf4',
+    color: '#00d2ff',
+    gradient: {
+      from: '#00d2ff',
+      to: '#3a7bd5'
+    },
     range: {
       from: 45,
       to: 120,
       step: 0.1
     },
+    url: 'weight'
   }
 ];
+const ip = '10.250.162.2';
+const port = '3000';
+export const API = {
+  base: `http://${ip}:${port}/api/`,
+}

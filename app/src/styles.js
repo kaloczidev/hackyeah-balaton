@@ -2,7 +2,7 @@ export const VALUES = {
   colors: { 
     white: '#F5F7FA',
     black: '#434A54',
-    gray: '#CCD1D9',
+    gray: '#E6E9ED',
  },
   padding: 25,
   paddingSmall: 10,

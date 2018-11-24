@@ -21,6 +21,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import TypeScreen from "./src/screens/type.screen";
 import HomeScreen from "./src/screens/home.screen";
 import CameraScreen from "./src/screens/camera.screen";
+import { VALUES } from "./src/styles";
 
 const Navigator = createStackNavigator(
   {
@@ -55,11 +56,18 @@ const Navigator = createStackNavigator(
         });
 
         const opacity = position.interpolate({
-          inputRange: [index - 1, index - 0.63, index],
-          outputRange: [0, 0, 1]
+          inputRange: [index - 1, index - 0.83, index],
+          outputRange: [0, 1, 1]
         });
 
-        return { opacity, transform: [{ translateX }] };
+        return { 
+          opacity,
+          transform: [{ translateX }],
+          shadowColor: VALUES.colors.black,
+          shadowOffset: { width: 4, height: 0 },
+          shadowOpacity: 0.8,
+          shadowRadius: 4,
+       };
       }
     })
   }
