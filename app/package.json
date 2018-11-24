@@ -12,7 +12,9 @@
     "react-native": "0.57.5",
     "react-native-awesome-viewpager": "^1.0.9",
     "react-native-camera": "^1.4.3",
+    "react-native-gesture-handler": "^1.0.9",
     "react-native-linear-gradient": "^2.4.4",
+    "react-native-wheel-picker": "^1.2.0",
     "react-navigation": "^3.0.0",
     "styled-components": "^4.1.1"
   },

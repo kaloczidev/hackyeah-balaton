@@ -6,44 +6,77 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from "react";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  Easing
+} from "react-native";
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-type Props = {};
-export default class App extends Component<Props> {
+import TypeScreen from "./src/screens/type.screen";
+import HomeScreen from "./src/screens/home.screen";
+import CameraScreen from "./src/screens/camera.screen";
+
+const Navigator = createStackNavigator(
+  {
+    //routing
+    home: {
+      screen: HomeScreen
+    },
+    type: {
+      screen: TypeScreen
+    },
+    camera: {
+      screen: CameraScreen
+    }
+  },
+  {
+    // config
+    headerMode: "none",
+    transitionConfig: () => ({
+      transitionSpec: {
+        duration: 300,
+        // easing: Easing.out(Easing.poly(4)),
+        timing: Animated.timing
+      },
+      screenInterpolator: sceneProps => {
+        const { layout, position, scene } = sceneProps;
+        const { index } = scene;
+
+        const width = layout.initWidth;
+        const translateX = position.interpolate({
+          inputRange: [index - 1, index, index + 1],
+          outputRange: [width, 0, 0]
+        });
+
+        const opacity = position.interpolate({
+          inputRange: [index - 1, index - 0.63, index],
+          outputRange: [0, 0, 1]
+        });
+
+        return { opacity, transform: [{ translateX }] };
+      }
+    })
+  }
+);
+const Container = createAppContainer(Navigator);
+
+export default class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+    return <Container />;
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF"
+  }
 });
