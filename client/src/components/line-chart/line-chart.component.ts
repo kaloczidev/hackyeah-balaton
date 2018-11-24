@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -7,7 +7,9 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./line-chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LineChartComponent {
+export class LineChartComponent implements OnInit {
+  @ViewChild('canvas') canvasRef: ElementRef;
+
   lineChartOptions: any = {
     responsive: true,
     legend: {
@@ -56,6 +58,17 @@ export class LineChartComponent {
   @Input() set data(data: { values: number[], labels: string[] }) {
     this.chartValues.next([{data: data.values}]);
     this.chartLabels.next(data.labels);
+  }
+
+  ngOnInit() {
+    const ctx = (<HTMLCanvasElement>this.canvasRef.nativeElement).getContext('2d');
+    const gradientFill = ctx.createLinearGradient(500, 0, 100, 0);
+    // gradientFill.addColorStop(0, 'rgba(67, 205, 162, 1)');
+    // gradientFill.addColorStop(1, 'rgba(24, 90, 157, 1)');
+
+    gradientFill.addColorStop(0, 'rgba(249, 74, 58, 1)');
+    gradientFill.addColorStop(1, 'rgba(229, 47, 101, 1)');
+    this.lineChartStyle[0].backgroundColor = gradientFill;
   }
 
   randomize(): void {
