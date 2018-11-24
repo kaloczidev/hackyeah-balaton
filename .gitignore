@@ -322,3 +322,5 @@ DerivedData/
 !default.perspectivev3
 
 .DS_Store
+
+/.idea
