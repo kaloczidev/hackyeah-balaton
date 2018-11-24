@@ -1,42 +1,30 @@
-import { Measurement } from '../interfaces/measurement.interface';
-import { Type } from '../interfaces/type.interface';
-
-export const types: Array<Type> = [
-  {
-    id: 1,
-    name: 'Weight',
-  },
-  {
-    id: 2,
-    name: 'Glucose',
-  },
-];
+import { Measurement, MeasurementTypes } from '../interfaces/measurement.interface';
 
 export const measurements: Array<Measurement> = [
   {
     id: 0,
-    type: types[0].id,
+    type: MeasurementTypes.weight,
     time: 1543075719394,
     image: 'd',
     value: 87
   },
   {
     id: 1,
-    type: types[0].id,
+    type: MeasurementTypes.weight,
     time: 1543075739394,
     image: 'd',
     value: 76
   },
   {
     id: 2,
-    type: types[1].id,
+    type: MeasurementTypes.glucose,
     time: 1543075729394,
     image: 'd',
     value: 11
   },
   {
     id: 3,
-    type: types[1].id,
+    type: MeasurementTypes.glucose,
     time: 1543075719394,
     image: 'd',
     value: 8

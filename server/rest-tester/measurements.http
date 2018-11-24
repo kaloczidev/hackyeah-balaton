@@ -4,12 +4,17 @@ GET http://localhost:3000/api/measurements
 
 ###
 
+# Get the measurements by type
+GET http://localhost:3000/api/measurements?type=weight
+
+###
+
 # Add a new measurement
 POST http://localhost:3000/api/measurements
 Content-Type: application/json
 
 {
-  "type": 1,
+  "type": "weight",
   "image" : "",
   "value": 1
 }

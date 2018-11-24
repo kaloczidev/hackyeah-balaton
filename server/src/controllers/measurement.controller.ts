@@ -13,22 +13,15 @@ export class MeasurementController {
 
   @Get()
   getMeasure(
-    @Query('skip') pSkip,
-    @Query('limit') pLimit,
+    @Query() params
   ): Array<Measurement> {
-    this.logger.log(`.getMeasure() - Query params: ${JSON.stringify({skip: pSkip, limit: pLimit})}`);
-
-    const skip = isNumeric(pSkip) ? parseInt(pSkip, 10) : 0;
-    const limit = isNumeric(pLimit) ? parseInt(pLimit, 10) : MeasurementService.limit;
-
-    return this.measurementsService.get({skip, limit});
+    this.logger.log(`.getMeasure() - Query params: ${JSON.stringify(params)}`);
+    return this.measurementsService.get(params);
   }
 
   @Post()
   addMeasure(@Body() newMeasure: Partial<Measurement>): Measurement {
     this.logger.log(`.addMeasure() - Body: ${JSON.stringify(newMeasure)}`);
-
-    if (typeof newMeasure.type === 'string') newMeasure.type = parseNumber(newMeasure.type);
 
     return this.measurementsService.add(newMeasure);
   }
