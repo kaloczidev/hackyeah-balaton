@@ -1,0 +1,44 @@
+{
+  "name": "hackyeah-back-end",
+  "version": "0.0.0",
+  "description": "Back end for the hackyeah app",
+  "author": "Tamas Csaba",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaloczidev/hackyeah-balaton"
+  },
+  "scripts": {
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start": "npm run start:prod",
+    "start2": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:dev": "nodemon",
+    "start:debug": "nodemon --config nodemon-debug.json",
+    "prestart:prod": "rimraf dist && tsc",
+    "start:prod": "node dist/main.js",
+    "start:hmr": "node dist/server",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "webpack": "webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "~5.3.11",
+    "@nestjs/core": "~5.3.11",
+    "reflect-metadata": "~0.1.12",
+    "rxjs": "~6.3.3",
+    "typescript": "~3.1.2"
+  },
+  "devDependencies": {
+    "@types/express": "~4.16.0",
+    "@types/node": "~10.11.6",
+    "nodemon": "~1.18.4",
+    "prettier": "~1.14.3",
+    "rimraf": "~2.6.2",
+    "ts-loader": "~5.2.1",
+    "ts-node": "~7.0.1",
+    "tsconfig-paths": "~3.6.0",
+    "tslint": "5.11.0",
+    "webpack": "~4.20.2",
+    "webpack-cli": "~3.1.2",
+    "webpack-node-externals": "~1.7.2"
+  }
+}

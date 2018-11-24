@@ -1,0 +1,33 @@
+
+# Get the players from the server
+GET http://localhost:3000/api/players
+
+###
+
+# Add a new player
+POST http://localhost:3000/api/players
+Content-Type: application/json
+
+{
+  "idTeam": 1,
+  "name": "Péter",
+  "age": 22,
+  "shirtNumber": 3
+}
+
+###
+
+# Modify an existing player
+PUT http://localhost:3000/api/players/1
+Content-Type: application/json
+
+{
+  "name": "Peti"
+}
+
+###
+
+# Delete an existing player
+DELETE http://localhost:3000/api/players/1
+
+###

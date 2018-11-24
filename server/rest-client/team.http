@@ -1,0 +1,31 @@
+
+# Get the teams from the server
+GET http://localhost:3000/api/teams
+
+###
+
+# Add a new team
+POST http://localhost:3000/api/teams
+Content-Type: application/json
+
+{
+  "id": 100,
+  "name": "Veszprem"
+}
+
+###
+
+# Modify an existing team
+PUT http://localhost:3000/api/teams/1
+Content-Type: application/json
+
+{
+  "name": "FC Barcelona"
+}
+
+###
+
+# Delete an existing team
+DELETE http://localhost:3000/api/teams/1
+
+###

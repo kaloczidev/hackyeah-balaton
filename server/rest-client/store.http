@@ -1,0 +1,5 @@
+
+# Initialize the stores with example data
+GET http://localhost:3000/api/init-store
+
+###
