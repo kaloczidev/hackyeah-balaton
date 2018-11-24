@@ -17,6 +17,7 @@ def get_digits_from_digit_contours(digit_map, digit_contours, threshold):
         visible_segments = _get_visible_segments_from_segments(roi, segments)
         # lookup the digit and draw it on the image
         digit = digit_map[tuple(visible_segments)]
+        # print(digit)
         yield digit
 #        cv2.rectangle(output, (x, y), (x + w, y + h), (0, 255, 0), 1)
 #        cv2.putText(output, str(digit), (x - 10, y - 10),
