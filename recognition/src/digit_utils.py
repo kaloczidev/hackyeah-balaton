@@ -7,7 +7,6 @@ def get_digits_from_digit_contours(digit_map, digit_contours, threshold):
         # extract the digit ROI
         (x, y, w, h) = boundingRect(c)
         roi = threshold[y:y + h, x:x + w]
-
         # compute the width and height of each of the 7 segments
         # we are going to examine
         (roiH, roiW) = roi.shape
@@ -16,12 +15,10 @@ def get_digits_from_digit_contours(digit_map, digit_contours, threshold):
         segments = _get_segments(w, h, int(roiH * 0.15), int(roiW * 0.25), int(roiH * 0.05))
         visible_segments = _get_visible_segments_from_segments(roi, segments)
         # lookup the digit and draw it on the image
-        digit = digit_map[tuple(visible_segments)]
+        digit = tuple(visible_segments)
         # print(digit)
         yield digit
-#        cv2.rectangle(output, (x, y), (x + w, y + h), (0, 255, 0), 1)
-#        cv2.putText(output, str(digit), (x - 10, y - 10),
-#                   cv2.FONT_HERSHEY_SIMPLEX, 0.65, (0, 255, 0), 2)
+
 
 
 def _get_visible_segments_from_segments(roi, segments):
