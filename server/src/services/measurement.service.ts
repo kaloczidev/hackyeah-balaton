@@ -1,16 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import * as shell from 'shelljs';
 
 import { Measurement, MeasurementParams } from '../interfaces/measurement.interface';
 import { Store } from '../classes/store';
 import { measurements } from '../data/init-data';
 
-
-
 @Injectable()
 export class MeasurementService {
   private store = new Store<Measurement>(measurements);
   public static limit: number = 20;
-  private defaultOptions = {limit: 20, skip: 0, type: null};
+  private defaultOptions: MeasurementParams = {limit: 20, skip: 0, type: null};
 
   get(params: MeasurementParams): Array<Measurement> {
     const options = Object.assign({}, this.defaultOptions, params);
@@ -22,6 +21,7 @@ export class MeasurementService {
   }
 
   add(measurements: Partial<Measurement>): Measurement {
+    console.log(shell.exec('python3 --version', {silent: true}).stdout);
     return this.store.add(measurements);
   }
 
