@@ -49,7 +49,7 @@ def get_digits_from_digit_contours(digit_contours, threshold):
         (x, y, w, h) = cv.boundingRect(c)
         roi = threshold[y:y + h, x:x + w]
         name = "/tmp/{}.jpg".format(str(time.time()))
-        cv.imwrite(name, roi)
+        #cv.imwrite(name, roi)
         names.append(name)
     print(",".join(names))
 
@@ -76,5 +76,6 @@ img = cv.GaussianBlur(img, (7,7), 0)
 
 _, img = cv.threshold(img, 50, 255, cv.THRESH_BINARY_INV)
 img = imutils.resize(img, width=100)
-get_digits_from_digit_contours(get_digit_contours(get_contours_of_image(img)), img)
+cv.imwrite(args.path, img)
+# get_digits_from_digit_contours(get_digit_contours(get_contours_of_image(img)), img)
 
