@@ -79,6 +79,3 @@ _, img = cv.threshold(img, 50, 255, cv.THRESH_BINARY_INV)
 img = imutils.resize(img, width=100)
 get_digits_from_digit_contours(get_digit_contours(get_contours_of_image(img)), img)
 
-plt.imshow(img)
-plt.show()
-
