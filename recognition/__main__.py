@@ -36,15 +36,11 @@ if __name__ == "__main__":
         args = arg_parser.parse_args()
         digits = None
         if args.path:
-            print("meh")
             for g_h in range(1, 15):
-                print("f")
                 for g_w in range(1, 15):
                     for th in range(90, 120):
                         digits = try_to_ocr(args.path, g_h, g_w, th)
-                        print(digits)
                         if digits:
-                            print(digits)
                             break
                     if digits:
                         break
