@@ -18,10 +18,13 @@ def data_to_img(uri):
 
 
 def try_to_ocr(path, gauss_w, gauss_h, treshold):
-    image_context = ImageContext(load_image(path), gauss_h, gauss_w, treshold)
-    digitCnts = get_digit_contours(get_contours_of_image(image_context.image))
-    digits = [str(digit) for digit in get_digits_from_digit_contours(get_digit_map(), digitCnts, image_context.image)]
-    return digits
+    try:
+        image_context = ImageContext(load_image(path), gauss_h, gauss_w, treshold)
+        digitCnts = get_digit_contours(get_contours_of_image(image_context.image))
+        digits = [str(digit) for digit in get_digits_from_digit_contours(get_digit_map(), digitCnts, image_context.image)]
+        return digits
+    except Exception:
+        return []
 
 
 if __name__ == "__main__":
@@ -31,15 +34,22 @@ if __name__ == "__main__":
         arg_parser.add_argument("--basepath", type=str, help="Path of the image with numbers")
         arg_parser.add_argument("--data", type=str, help="Base64 image bytes")
         args = arg_parser.parse_args()
-        digits = []
-        digits = try_to_ocr(args.path, 1, 17, 95)
- #       if args.path:
-  #          for g_h in range(1, 15, step=2):
-   #             for g_w in range(1, 15, step=2):
-    #                for th in range(90, 120):
-     #                   digits = try_to_ocr(args.path, g_h, g_w, th)
-      #                  if digits:
-       #                     break
+        digits = None
+        if args.path:
+            print("meh")
+            for g_h in range(1, 15):
+                print("f")
+                for g_w in range(1, 15):
+                    for th in range(90, 120):
+                        digits = try_to_ocr(args.path, g_h, g_w, th)
+                        print(digits)
+                        if digits:
+                            print(digits)
+                            break
+                    if digits:
+                        break
+                if digits:
+                    break
 
         print(",".join(digits) if digits else "Unrecognizable :(")
         exit(0)
