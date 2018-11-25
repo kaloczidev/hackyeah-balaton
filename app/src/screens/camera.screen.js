@@ -8,85 +8,61 @@ import {
   Dimensions
 } from "react-native";
 
-import Picker from "react-native-wheel-picker";
-import LinearGradient from "react-native-linear-gradient";
-
-import { ActionSheetCustom as ActionSheet } from "react-native-actionsheet";
-
-const moment = require("moment");
-
-const Color = require("color");
+import { RNCamera } from "react-native-camera";
 
 import { STYLES, VALUES } from "../styles";
-import { ScrollView } from "react-native-gesture-handler";
+
 import { API } from "../config";
 
-const { PickerItem } = Picker;
 const { Text, View } = Animated;
 
-export default class TypeScreen extends Component {
+export default class CameraScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedItem: 0,
-      itemList: [],
-      history: [],
-      selectedCategory: 0
+      scannedValue: null
     };
+    this.camera = React.createRef();
   }
 
-  componentDidMount() {
-    this.loadItems();
-    const values = [];
-    const range = this.props.navigation.state.params.config.range;
-    for (let i = range.from; i < range.to; i += range.step) {
-      const k = Math.round(i * 10) / 10 + "";
-      values.push(k.includes(".") ? k : k + ".0");
+  componentDidMount() {}
+
+  takePicture = async function() {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true, width: 300 };
+      const data = await this.camera.takePictureAsync(options);
+      this.sendPhoto(data.base64);
     }
-
-    this.setState({
-      itemList: values,
-      selectedItem: values.length / 4
-    });
-  }
-
-  onPickerSelect(index) {
-    this.setState({
-      selectedItem: index
-    });
-  }
-
-  showActionSheet = () => {
-    this.ActionSheet.show();
   };
 
-  async loadItems() {
-    const target = API.base + "measurements?type=";
-
-    await fetch(target + this.props.navigation.state.params.config.url)
+  sendPhoto(base64) {
+    const { url } = this.props.navigation.state.params.config;
+    const target = API.base + "measurements/";
+    fetch(target, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify({
+        image: base64,
+        type: url
+      })
+    })
       .then(r => r.json())
       .then(r => {
         console.log(r);
         this.setState({
-          history: r
+          scannedValue: r.value
         });
       })
       .catch(e => {
-        console.log("szopol");
         console.log(e);
       });
   }
 
   render() {
     const { state, navigate, pop } = this.props.navigation;
-    const {
-      name,
-      unit,
-      categories,
-      color,
-      url,
-      gradient
-    } = state.params.config;
+    const { color, url } = state.params.config;
 
     return (
       <SafeAreaView style={{ ...styles.view }}>
@@ -94,58 +70,100 @@ export default class TypeScreen extends Component {
           style={{
             position: "absolute",
             top: 0,
-            height: 500,
+            height: 200,
             backgroundColor: color,
             width: Dimensions.get("screen").width
           }}
         />
-        <ScrollView>
-          <TouchableOpacity
-            onPress={() => {
-              pop();
-            }}
-            style={{
-              paddingLeft: VALUES.padding - 15,
-              position: "absolute",
-              top: 0
-            }}
-          >
-            <Text style={{ color: "white" }}> ◂ back </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={{
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-            onPress={() => {
-              navigate("camera", state.params.config);
-            }}
+        <Text
+          style={{
+            paddingTop: 20,
+            fontSize: VALUES.fontSizes.text,
+            color: VALUES.colors.white,
+            textAlign: "center",
+            paddingBottom: 20
+          }}
+        >
+          Point the camera on the device
+        </Text>
+        <RNCamera
+          ref={ref => {
+            this.camera = ref;
+          }}
+          style={styles.preview}
+          type={RNCamera.Constants.Type.back}
+          flashMode={RNCamera.Constants.FlashMode.off}
+          permissionDialogTitle={"Permission to use camera"}
+          permissionDialogMessage={
+            "We need your permission to use your camera phone"
+          }
           >
             <View
               style={{
-                padding: 20,
-                marginTop: 20,
-                marginBottom: 40,
-                color: VALUES.colors.black,
-                backgroundColor: VALUES.colors.white,
-                borderRadius: 100
+                backgroundColor: "transparent",
+                flex: 1,
+                width: Dimensions.get('window').width,
+                borderWidth: 50,
+                borderTopWidth: 100,
+                borderBottomWidth: 100,
+                borderColor: "rgba(0,0,0,0.7)"
+              }}
+            />
+          </RNCamera>
+        <TouchableOpacity
+          onPress={() => {
+            pop();
+          }}
+          style={{
+            paddingLeft: VALUES.padding - 15,
+            position: "absolute",
+            top: 43
+          }}
+        >
+          <Text style={{ color: "white" }}> ◂ back </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+          onPress={() => {
+            this.takePicture();
+          }}
+        >
+          <View
+            style={{
+              padding: 20,
+              marginTop: -33,
+              marginBottom: 40,
+              backgroundColor: color,
+              borderRadius: 100,
+              shadowColor: VALUES.colors.black,
+              shadowOffset: { width: 0, height: 6 },
+              shadowOpacity: 0.3,
+              shadowRadius: 4
+            }}
+          >
+            <Text
+              style={{
+                fontSize: VALUES.fontSizes.title,
+                textAlign: "center",
+                color: VALUES.colors.white,
+                paddingLeft: 30,
+                paddingRight: 30
               }}
             >
-              <Text
-                style={{
-                  fontSize: VALUES.fontSizes.title,
-                  textAlign: "center",
-                  color: gradient.to,
-                  paddingLeft: 30,
-                  paddingRight: 30
-                }}
-              >
-                Scan
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
+              Scan
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+            <Text style={{
+              fontSize: 40,
+              textAlign: 'center',
+              color: 'red'
+            }}> {this.state.scannedValue || 'KEFIR'} </Text>
       </SafeAreaView>
     );
   }
@@ -159,22 +177,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  saveButton: {
-    padding: VALUES.paddingSmall,
-    backgroundColor: VALUES.colors.white,
-    marginTop: -50,
-    marginBottom: 35,
-    shadowColor: VALUES.colors.black,
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    borderRadius: 100
-  },
-  saveButtonText: {
-    flex: 1,
-    height: 30,
-    fontSize: 22,
-    textAlign: "center",
-    color: VALUES.colors.black
-  },
+  preview: {
+    width: Dimensions.get("screen").width,
+    height: Dimensions.get("screen").width,
+    justifyContent: "flex-end",
+    alignItems: "center"
+  }
 });

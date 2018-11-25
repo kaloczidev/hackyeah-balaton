@@ -274,12 +274,10 @@ export default class TypeScreen extends Component {
                       fontWeight: "500"
                     }}
                   >
-                    {" "}
-                    {value.value}{" "}
+                    {value.value}
                   </Text>
                   <Text style={{ opacity: 0.5 }}>
-                    {" "}
-                    {moment(value.time).format("hh:mm ddd on DD MMM YYYY")}{" "}
+                    {moment(value.time).format("hh:mm ddd on DD MMM YYYY")}
                   </Text>
                 </View>
               );
