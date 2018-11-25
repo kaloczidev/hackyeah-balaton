@@ -46,7 +46,7 @@ export const TYPECONFIG = [
     url: 'temperature'
   }
 ];
-const ip = '10.250.194.29';
+const ip = '10.250.194.13';
 const port = '3000';
 export const API = {
   base: `http://${ip}:${port}/api/`,

@@ -172,7 +172,7 @@ export default class CameraScreen extends Component {
             justifyContent: "center"
           }}
           onPress={() => {
-            setByCamera(11.3);
+            setByCamera(this.state.scannedValue+'');
           }}
         >
           <View
