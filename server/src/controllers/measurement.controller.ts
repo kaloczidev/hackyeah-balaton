@@ -21,7 +21,7 @@ export class MeasurementController {
 
   @Post()
   addMeasure(@Body() newMeasure: Partial<Measurement>): Measurement {
-    this.logger.log(`.addMeasure() - Body: ${JSON.stringify(newMeasure)}`);
+    this.logger.log(`.addMeasure()`);
 
     return this.measurementsService.add(newMeasure);
   }

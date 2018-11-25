@@ -17,6 +17,16 @@ def data_to_img(uri):
     return filename
 
 
+def try_to_ocr(path, gauss_w, gauss_h, treshold):
+    try:
+        image_context = ImageContext(load_image(path), gauss_h, gauss_w, treshold)
+        digitCnts = get_digit_contours(get_contours_of_image(image_context.image))
+        digits = [str(digit) for digit in get_digits_from_digit_contours(get_digit_map(), digitCnts, image_context.image)]
+        return digits
+    except Exception:
+        return []
+
+
 if __name__ == "__main__":
     try:
         arg_parser = ArgumentParser()
@@ -24,20 +34,20 @@ if __name__ == "__main__":
         arg_parser.add_argument("--basepath", type=str, help="Path of the image with numbers")
         arg_parser.add_argument("--data", type=str, help="Base64 image bytes")
         args = arg_parser.parse_args()
+        digits = None
         if args.path:
-            image_context = ImageContext(load_image(args.path))
+            for g_h in range(1, 15):
+                for g_w in range(1, 15):
+                    for th in range(90, 120):
+                        digits = try_to_ocr(args.path, g_h, g_w, th)
+                        if digits:
+                            break
+                    if digits:
+                        break
+                if digits:
+                    break
 
-        if args.data:
-            image_context = ImageContext(load_image(data_to_img(args.data)))
-
-        if args.basepath:
-            with open(args.basepath) as f:
-                image_context = ImageContext(load_image(data_to_img(f.read())))
-
-        digitCnts = get_digit_contours(get_contours_of_image(image_context.image))
-        digits = [str(digit) for digit in get_digits_from_digit_contours(get_digit_map(), digitCnts, image_context.image)]
-        print(",".join(digits))
-
+        print(",".join(digits) if digits else "Unrecognizable :(")
         exit(0)
     except Exception:
         exit(1)

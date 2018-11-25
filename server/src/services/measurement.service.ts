@@ -4,6 +4,7 @@ import * as shell from 'shelljs';
 import { Measurement, MeasurementParams } from '../interfaces/measurement.interface';
 import { Store } from '../classes/store';
 import { measurements } from '../data/init-data';
+import * as fs from 'fs';
 
 @Injectable()
 export class MeasurementService {
@@ -25,11 +26,7 @@ export class MeasurementService {
   add(measurement: Partial<Measurement>): Measurement {
 
     if (measurement.image) {
-      //const data =  measurements.image.replace(/^data:image\/png;base64,/, '');
-      //require("fs").writeFile('out.png', data, 'base64', (err) => console.log(err))}
-      const value = shell.exec('python3 ../recognition/__main__.py ' + measurement.image, {silent: true}).stdout;
-
-      measurement.value = value;
+      measurement.value = this.getValue(measurement.image);
 
       //clean image from the DB
       delete measurement.image;
@@ -44,5 +41,12 @@ export class MeasurementService {
 
   remove(measurementsId: number | null): number {
     return this.store.remove(measurementsId);
+  }
+
+  private getValue(data): any {
+    fs.writeFileSync('out.jpg', data, 'base64');
+    const exec = shell.exec('python3 ../recognition/__main__.py --path ../server/out.jpg ', {silent: true});
+    console.log(exec.stdout);
+    return exec.stdout.trim();
   }
 }

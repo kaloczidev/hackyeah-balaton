@@ -11,4 +11,5 @@ export class GaugeChartComponent {
   @Input() max = 100;
   @Input() value = 50;
   @Input() label = 'label';
+  @Input() cssClass = 'red';
 }

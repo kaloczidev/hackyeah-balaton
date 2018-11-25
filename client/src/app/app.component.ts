@@ -20,8 +20,9 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {
     this.http.get(`${API_HOST}/api/measurements`).subscribe((response: any[]) => {
+      console.log(response);
       this.glucose.next(DataUtil.prepare(response, MeasurementType.GLUCOSE));
-      this.thermo.next(DataUtil.prepare(response, MeasurementType.THERMO));
+      this.thermo.next(DataUtil.prepare(response, MeasurementType.TEMPERATURE));
       this.weight.next(DataUtil.prepare(response, MeasurementType.WEIGHT));
     });
   }

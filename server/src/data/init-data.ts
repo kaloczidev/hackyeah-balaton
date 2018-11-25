@@ -265,4 +265,46 @@ export const measurements: Array<Measurement> = [
     value: 75.3,
     type: MeasurementTypes.weight
   },
+  {
+    id: 38,
+    time: "2018-10-08 07:29",
+    value: 36.4,
+    type: MeasurementTypes.temperature
+  },
+  {
+    id: 39,
+    time: "2018-10-09 07:31",
+    value: 36.5,
+    type: MeasurementTypes.temperature
+  },
+  {
+    id: 39,
+    time: "2018-10-10 07:36",
+    value: 36.4,
+    type: MeasurementTypes.temperature
+  },
+  {
+    id: 40,
+    time: "2018-10-11 07:36",
+    value: 36.8,
+    type: MeasurementTypes.temperature
+  },
+  {
+    id: 41,
+    time: "2018-10-12 07:36",
+    value: 37.4,
+    type: MeasurementTypes.temperature
+  },
+  {
+    id: 42,
+    time: "2018-10-13 07:25",
+    value: 37.1,
+    type: MeasurementTypes.temperature
+  },
+  {
+    id: 43,
+    time: "2018-10-14 07:28",
+    value: 36.8,
+    type: MeasurementTypes.temperature
+  },
 ];

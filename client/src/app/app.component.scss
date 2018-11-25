@@ -13,16 +13,21 @@
   background: $color-darkGray-dark;
   color: $color-lightGray-light;
   grid-area: layout-sidebar;
-  box-shadow: 2px 0 6px $color-mediumGray-dark;
+  box-shadow: 2px 0 6px $color-mediumGray-light;
   font-weight: 300;
   text-shadow: -1px -1px 1 darken($color-darkGray-dark, 100);
+  border-right: 1px solid $color-lightGray-dark;
 
   .sidebar-header {
     background: $color-aqua-dark;
-    border-bottom: 1px solid lighten($color-aqua-light, 10);
-    text-shadow: 2px 2px darken($color-aqua-dark, 14);
     text-align: center;
     box-shadow: 0 2px 6px darken($color-darkGray-dark, 4);
+
+    .logo {
+      width: 110px;
+      fill: white;
+      margin: 10px;
+    }
   }
 }
 
