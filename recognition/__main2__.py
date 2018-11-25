@@ -1,4 +1,5 @@
 import time
+from argparse import ArgumentParser
 
 import cv2 as cv
 import imutils
@@ -21,6 +22,7 @@ def get_digit_contours(im_contours):
 
     # generate list with contours in size
     # print("get_digit_contours", im_contours)
+
     digit_contours = [
         contour
         for contour in im_contours
@@ -37,21 +39,30 @@ def get_digit_contours(im_contours):
 
 def _is_contour_in_size(contour) -> bool:
     (x, y, w, h) = cv.boundingRect(contour)
-    return 30 > w >= 5 and 40 <= h < 80
+    return 30 > w >= 5 and 10 <= h < 25
 
 
 def get_digits_from_digit_contours(digit_contours, threshold):
     # loop over each of the digits
+    names = []
     for c in digit_contours:
         (x, y, w, h) = cv.boundingRect(c)
         roi = threshold[y:y + h, x:x + w]
-        cv.imwrite("{}.jpg",format(str(time.time())), roi)
+        name = "/tmp/{}.jpg".format(str(time.time()))
+        #cv.imwrite(name, roi)
+        names.append(name)
+    print(",".join(names))
 
 
 from src.image_utils import get_contours_of_image
+
+arg_parser = ArgumentParser()
+arg_parser.add_argument("--path", type=str, help="Path of the image with numbers")
+args = arg_parser.parse_args()
+
 kernel = np.ones((5,5), np.uint8)
 
-img = cv.imread('meh.jpg')
+img = cv.imread(args.path)
 
 img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
@@ -65,8 +76,6 @@ img = cv.GaussianBlur(img, (7,7), 0)
 
 _, img = cv.threshold(img, 50, 255, cv.THRESH_BINARY_INV)
 img = imutils.resize(img, width=100)
-get_digits_from_digit_contours(get_digit_contours(get_contours_of_image(img)), img)
-cv.imwrite("meh2.jpg", img)
-plt.imshow(img)
-plt.show()
+cv.imwrite(args.path, img)
+# get_digits_from_digit_contours(get_digit_contours(get_contours_of_image(img)), img)
 
