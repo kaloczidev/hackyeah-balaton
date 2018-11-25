@@ -16,10 +16,7 @@ def get_digits_from_digit_contours(digit_map, digit_contours, threshold):
         visible_segments = _get_visible_segments_from_segments(roi, segments)
         # lookup the digit and draw it on the image
         digit = digit_map.get(tuple(visible_segments))
-        print(visible_segments)
-        print(digit)
         if digit is not None:
-        # print(digit)
             yield digit
 
 

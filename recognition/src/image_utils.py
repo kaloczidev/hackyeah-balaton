@@ -42,20 +42,15 @@ def get_digit_contours(im_contours):
 
 def _is_contour_in_size(contour) -> bool:
     (x, y, w, h) = boundingRect(contour)
-    # print("_is_contour_in_size", list(contour), *(x, y, w, h))
     return w >= 40 and 120 <= h
 
 
 def _get_two_max_heighted_contour(contours):
-    for c in contours:
-        print(boundingRect(c))
-
     h_map = {
         boundingRect(contour)[3]: contour
         for contour in contours
         if boundingRect(contour)[3] > 100
     }
-    print([h for h in sorted(h_map.keys(), reverse=True)[:2]])
     return  [h_map[h] for h in sorted(h_map.keys(), reverse=True)[:2]]
 
 
