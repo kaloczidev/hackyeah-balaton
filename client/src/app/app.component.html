@@ -29,11 +29,14 @@
       <br>
     </div>
 
-    <app-gauge-chart [value]="10" label="glucose" cssClass="red"></app-gauge-chart>
+    <app-gauge-chart [value]="(glucoseGauge | async).value" [min]="(glucoseGauge | async).min"
+                     [max]="(glucoseGauge | async).max" label="glucose" cssClass="red"></app-gauge-chart>
     <br>
-    <app-gauge-chart [value]="34" label="optimal" cssClass="green"></app-gauge-chart>
+    <app-gauge-chart [value]="(weightGauge | async).value" [min]="(weightGauge | async).min"
+                     [max]="(weightGauge | async).max" label="weight" cssClass="blue"></app-gauge-chart>
     <br>
-    <app-gauge-chart [value]="89" label="z" cssClass="blue"></app-gauge-chart>
+    <app-gauge-chart [value]="(temperatureGauge | async).value" [min]="(temperatureGauge | async).min"
+                     [max]="(temperatureGauge | async).max" label="temperature" cssClass="green"></app-gauge-chart>
     <br>
 
     <table class="data-table">
@@ -69,7 +72,7 @@
     <app-box style="width: 730px">
       <h1><span class="mdi mdi-thermometer"></span>Temperature</h1>
       <app-line-chart [color]="'#6c7d15'" startColor="#abd300" endColor="#8CC152"
-                      [data]="thermo | async"></app-line-chart>
+                      [data]="temperature | async"></app-line-chart>
     </app-box>
   </div>
 </div>
