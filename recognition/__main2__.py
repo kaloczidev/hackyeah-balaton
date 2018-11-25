@@ -39,7 +39,6 @@ def get_digit_contours(im_contours):
 
 def _is_contour_in_size(contour) -> bool:
     (x, y, w, h) = cv.boundingRect(contour)
-    print((x, y, w, h))
     return 30 > w >= 5 and 10 <= h < 25
 
 
