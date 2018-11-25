@@ -687,7 +687,7 @@ cache-base@^1.0.1:
   dependencies:
     collection-visit "^1.0.0"
     component-emitter "^1.2.1"
-    getAll-value "^2.0.6"
+    get-value "^2.0.6"
     has-value "^1.0.0"
     isobject "^3.0.1"
     set-value "^2.0.0"
@@ -1371,7 +1371,7 @@ execa@^0.10.0:
   integrity sha512-7XOMnz8Ynx1gGo/3hyV9loYNPWM94jG3+3T3Y8tsfSstFmETmENCMU/A/zj8Lyaj1lkgEepKepvd6240tBRvlw==
   dependencies:
     cross-spawn "^6.0.0"
-    getAll-stream "^3.0.0"
+    get-stream "^3.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
     p-finally "^1.0.0"
@@ -1384,7 +1384,7 @@ execa@^0.7.0:
   integrity sha1-lEvs00zEHuMqY6n68nrVpl/Fl3c=
   dependencies:
     cross-spawn "^5.0.1"
-    getAll-stream "^3.0.0"
+    get-stream "^3.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
     p-finally "^1.0.0"
@@ -1628,17 +1628,17 @@ gauge@~2.7.3:
 
 get-caller-file@^1.0.1:
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/getAll-caller-file/-/getAll-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
+  resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
   integrity sha512-3t6rVToeoZfYSGd8YoLFR2DJkiQrIiUrGcjvFX2mDw3bn6k2OtwHN0TNCLbBO+w8qTvimhDkv+LSscbJY1vE6w==
 
 get-stream@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/getAll-stream/-/getAll-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
+  resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
   integrity sha1-jpQ9E1jcN1VQVOy+LtsFqhdO3hQ=
 
 get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
-  resolved "https://registry.yarnpkg.com/getAll-value/-/getAll-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
+  resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
 
 glob-parent@^3.1.0:
@@ -1680,7 +1680,7 @@ got@^6.7.1:
   dependencies:
     create-error-class "^3.0.0"
     duplexer3 "^0.1.4"
-    getAll-stream "^3.0.0"
+    get-stream "^3.0.0"
     is-redirect "^1.0.0"
     is-retry-allowed "^1.0.0"
     is-stream "^1.0.0"
@@ -1717,7 +1717,7 @@ has-value@^0.3.1:
   resolved "https://registry.yarnpkg.com/has-value/-/has-value-0.3.1.tgz#7b1f58bada62ca827ec0a2078025654845995e1f"
   integrity sha1-ex9YutpiyoJ+wKIHgCVlSEWZXh8=
   dependencies:
-    getAll-value "^2.0.3"
+    get-value "^2.0.3"
     has-values "^0.1.4"
     isobject "^2.0.0"
 
@@ -1726,7 +1726,7 @@ has-value@^1.0.0:
   resolved "https://registry.yarnpkg.com/has-value/-/has-value-1.0.0.tgz#18b281da585b1c5c51def24c930ed29a0be6b177"
   integrity sha1-GLKB2lhbHFxR3vJMkw7SmgvmsXc=
   dependencies:
-    getAll-value "^2.0.6"
+    get-value "^2.0.6"
     has-values "^1.0.0"
     isobject "^3.0.0"
 
@@ -3818,7 +3818,7 @@ union-value@^1.0.0:
   integrity sha1-XHHDTLW61dzr4+oM0IIHulqhrqQ=
   dependencies:
     arr-union "^3.1.0"
-    getAll-value "^2.0.6"
+    get-value "^2.0.6"
     is-extendable "^0.1.1"
     set-value "^0.4.3"
 
@@ -4119,7 +4119,7 @@ yargs@^12.0.2:
     cliui "^4.0.0"
     decamelize "^1.2.0"
     find-up "^3.0.0"
-    getAll-caller-file "^1.0.1"
+    get-caller-file "^1.0.1"
     os-locale "^3.0.0"
     require-directory "^2.1.1"
     require-main-filename "^1.0.1"

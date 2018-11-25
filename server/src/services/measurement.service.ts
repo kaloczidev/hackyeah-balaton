@@ -5,6 +5,11 @@ import { Measurement, MeasurementParams } from '../interfaces/measurement.interf
 import { Store } from '../classes/store';
 import { measurements } from '../data/init-data';
 import * as fs from 'fs';
+import * as path from 'path';
+
+const OUTFILE = 'out.jpg';
+const TESSDATA_PREFIX = path.resolve(__dirname, '..', '..', '..', 'letsgodigital/');
+const TESSERACT_COMMAND = 'cat ' + OUTFILE + ' | tesseract stdin stdout -l letsgodigital';
 
 @Injectable()
 export class MeasurementService {
@@ -44,9 +49,9 @@ export class MeasurementService {
   }
 
   private getValue(data): any {
-    fs.writeFileSync('out.jpg', data, 'base64');
-    const exec = shell.exec('python3 ../recognition/__main__.py --path ../server/out.jpg ', {silent: true});
-    console.log(exec.stdout);
+    fs.writeFileSync(OUTFILE, data, 'base64');
+    const exec = shell.exec('export TESSDATA_PREFIX=' + TESSDATA_PREFIX + '; ' + TESSERACT_COMMAND, {silent: true});
+    console.log(exec);
     return exec.stdout.trim();
   }
 }
