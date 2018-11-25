@@ -7,9 +7,9 @@ class ImageContext:
         _, self.image = threshold(
             GaussianBlur(
                 cvtColor(image, COLOR_BGR2GRAY),
-                (1, 51),
+                (1, 17),
                 0
             ),
-            120, 255, THRESH_BINARY
+            95, 255, THRESH_BINARY
         )
 

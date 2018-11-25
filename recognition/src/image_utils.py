@@ -5,8 +5,6 @@ from cv2 import approxPolyDP, arcLength, findContours, contourArea, RETR_EXTERNA
 from imutils.contours import sort_contours
 
 
-
-
 def get_contours_of_image(image, *, sort_reverse: bool=True):
     # find contours in the edge map, then sort them by their
     # size in descending order
@@ -14,12 +12,6 @@ def get_contours_of_image(image, *, sort_reverse: bool=True):
     if sort_reverse:
         contours = sorted(contours, key=contourArea, reverse=True)
     return contours
-
-
-def get_threshold_of(image):
-    # THRESH_TRUNC, THRESH_TRIANGLE, THRESH_TOZERO_INV, THRESH_TOZERO, THRESH_MASK, THRESH_BINARY
-    _, _threshold = threshold(image, 120, 255, THRESH_BINARY)
-    return _threshold
 
 
 def get_digit_contours(im_contours):
@@ -42,16 +34,7 @@ def get_digit_contours(im_contours):
 
 def _is_contour_in_size(contour) -> bool:
     (x, y, w, h) = boundingRect(contour)
-    return w >= 40 and 120 <= h
-
-
-def _get_two_max_heighted_contour(contours):
-    h_map = {
-        boundingRect(contour)[3]: contour
-        for contour in contours
-        if boundingRect(contour)[3] > 100
-    }
-    return  [h_map[h] for h in sorted(h_map.keys(), reverse=True)[:2]]
+    return 30 > w >= 5 and 40 <= h < 80
 
 
 
