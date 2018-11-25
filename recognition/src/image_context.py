@@ -4,7 +4,7 @@ from cv2 import cvtColor, COLOR_BGR2GRAY, GaussianBlur, THRESH_BINARY, threshold
 
 class ImageContext:
 
-    def __init__(self, image, g_h, g_w, tr):
+    def __init__(self, image, s, s ,d):
         kernel = numpy.ones((5, 5), numpy.uint8)
 
         img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -18,12 +18,5 @@ class ImageContext:
         img = cv2.GaussianBlur(img, (7, 7), 0)
 
         _, img = cv2.threshold(img, 50, 255, cv2.THRESH_BINARY_INV)
-        _, self.image = threshold(
-            GaussianBlur(
-                cvtColor(image, COLOR_BGR2GRAY),
-                (g_w, g_h),
-                0
-            ),
-            tr, 255, THRESH_BINARY
-        )
+        self.image = img
 
