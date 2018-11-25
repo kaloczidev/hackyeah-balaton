@@ -34,20 +34,7 @@ if __name__ == "__main__":
         arg_parser.add_argument("--basepath", type=str, help="Path of the image with numbers")
         arg_parser.add_argument("--data", type=str, help="Base64 image bytes")
         args = arg_parser.parse_args()
-        digits = None
-        if args.path:
-            for g_h in range(1, 15):
-                for g_w in range(1, 15):
-                    for th in range(90, 120):
-                        digits = try_to_ocr(args.path, g_h, g_w, th)
-                        if digits:
-                            break
-                    if digits:
-                        break
-                if digits:
-                    break
-
-        print(",".join(digits) if digits else "Unrecognizable :(")
+        digits = try_to_ocr(args.path, 0,0 ,0)
         exit(0)
     except Exception:
         exit(1)
