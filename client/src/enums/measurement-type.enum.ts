@@ -1,5 +1,5 @@
 export enum MeasurementType {
   GLUCOSE = 'glucose',
-  THERMO = 'thermo',
+  TEMPERATURE = 'temperature',
   WEIGHT = 'weight',
 }

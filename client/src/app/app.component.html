@@ -18,12 +18,9 @@
       <br>
     </div>
 
-    <app-gauge-chart [value]="10" label="current"></app-gauge-chart>
-    <br>
-    <app-gauge-chart [value]="34" label="optimal"></app-gauge-chart>
-    <br>
-    <app-gauge-chart [value]="89"></app-gauge-chart>
-    <br>
+    <app-gauge-chart [value]="10" label="glucose" cssClass="red"></app-gauge-chart><br>
+    <app-gauge-chart [value]="34" label="optimal" cssClass="green"></app-gauge-chart><br>
+    <app-gauge-chart [value]="89" label="z" cssClass="blue"></app-gauge-chart><br>
 
     <span style="font-size: 24px" class="mdi mdi-gender-male-female"></span>gender: male<br>
     <span style="font-size: 24px" class="mdi mdi-gender-male-female"></span>blood: 0rh+<br>
@@ -31,17 +28,17 @@
   </div>
 
   <div class="main">
-    <app-box style="width: 45%">
-      <h1>Glucose</h1>
+    <app-box style="width: 730px">
+      <h1><span class="mdi mdi-candycane"></span>Glucose</h1>
       <app-line-chart [color]="'#b00035'" startColor="#fa4a3b" endColor="#e52f65" [data]="glucose | async"></app-line-chart>
     </app-box>
-    <app-box style="width: 45%">
-      <h1>Weight</h1>
+    <app-box style="width: 730px">
+      <h1><span class="mdi mdi-dumbbell"></span>Weight</h1>
       <app-line-chart [color]="'#267a87'" startColor="#43cea2" endColor="#185a9d" [data]="weight | async"></app-line-chart>
     </app-box>
-    <app-box style="width: 45%">
-      <h1>Temperature</h1>
-      <app-line-chart [color]="'#6c7d15'" startColor="#7b9402" endColor="#abd300" [data]="glucose | async"></app-line-chart>
+    <app-box style="width: 730px">
+      <h1><span class="mdi mdi-oil-temperature"></span>Temperature</h1>
+      <app-line-chart [color]="'#6c7d15'" startColor="#7b9402" endColor="#abd300" [data]="thermo | async"></app-line-chart>
     </app-box>
   </div>
 </div>

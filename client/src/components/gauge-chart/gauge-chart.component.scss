@@ -25,10 +25,21 @@ $gauge-size: 150px;
   }
 
   mwl-gauge > .gauge > .value {
-    stroke: $color-aqua-dark;
     stroke-width: 6;
     stroke-linecap: round;
     fill: rgba(0, 0, 0, 0);
+  }
+
+  mwl-gauge.red > .gauge > .value {
+    stroke: $color-bittersweet-light;
+  }
+
+  mwl-gauge.green > .gauge > .value {
+    stroke: $color-grass-light;
+  }
+
+  mwl-gauge.blue > .gauge > .value {
+    stroke: $color-aqua-light;
   }
 
   mwl-gauge > .gauge > .value-text {

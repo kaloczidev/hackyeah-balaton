@@ -23,4 +23,10 @@ h1 {
   font-size: 42px;
   margin: 0;
   padding: 12px 0;
+
+  span {
+    font-size: 36px;
+    line-height: 0;
+    color: $color-darkGray-light;
+  }
 }
