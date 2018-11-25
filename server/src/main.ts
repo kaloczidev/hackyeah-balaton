@@ -9,3 +9,5 @@ async function bootstrap() {
   await app.listen(3000);
 }
 bootstrap();
+
+process.on('SIGINT', () => { console.log("Bye bye!"); process.exit(); });
