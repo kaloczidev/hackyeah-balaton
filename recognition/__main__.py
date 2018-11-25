@@ -41,7 +41,7 @@ if __name__ == "__main__":
       #                  if digits:
        #                     break
 
-        print(",".join(digits))
+        print(",".join(digits) if digits else "Unrecognizable :(")
         exit(0)
     except Exception:
         exit(1)
