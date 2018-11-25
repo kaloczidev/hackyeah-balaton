@@ -159,6 +159,13 @@ export default class CameraScreen extends Component {
           </View>
         </TouchableOpacity>
 
+
+            <Text style={{
+              fontSize: 28,
+              paddingBottom: 60,
+              textAlign: 'center',
+              color: VALUES.colors.black
+            }}> {this.state.scannedValue || 'Waiting for scan'} </Text>
          <TouchableOpacity
           style={{
             alignItems: "center",
@@ -173,7 +180,7 @@ export default class CameraScreen extends Component {
               padding: 20,
               marginTop: -33,
               marginBottom: 40,
-              backgroundColor: color,
+              backgroundColor: VALUES.colors.white,
               borderRadius: 100,
               shadowColor: VALUES.colors.black,
               shadowOffset: { width: 0, height: 6 },
@@ -185,7 +192,7 @@ export default class CameraScreen extends Component {
               style={{
                 fontSize: VALUES.fontSizes.title,
                 textAlign: "center",
-                color: VALUES.colors.white,
+                color: color,
                 paddingLeft: 30,
                 paddingRight: 30
               }}
@@ -195,11 +202,6 @@ export default class CameraScreen extends Component {
           </View>
         </TouchableOpacity>
 
-            <Text style={{
-              fontSize: 40,
-              textAlign: 'center',
-              color: 'red'
-            }}> {this.state.scannedValue || 'KEFIR'} </Text>
       </SafeAreaView>
     );
   }

@@ -57,8 +57,9 @@ export default class ValueTypeCard extends Component {
             colors={[gradient.from, gradient.to]}
           >
             <Text style={{ ...styles.header }}>{name}</Text>
-            <View>
+            <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
               <Text style={styles.recent}>{this.state.avarage}</Text>
+              <Text style={{color: VALUES.colors.white, paddingBottom: 10}}> {unit} </Text>
             </View>
             <View>
               <Text style={styles.avarage}>recent: {this.state.recent}</Text>

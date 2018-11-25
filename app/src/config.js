@@ -29,9 +29,24 @@ export const TYPECONFIG = [
       step: 0.1
     },
     url: 'weight'
+  },{
+    name: "temperature",
+    unit: "°C",
+    categories: ["illness", "other"],
+    color: '#db391e',
+    gradient: {
+      from: '#db391e',
+      to: '#f6a742'
+    },
+    range: {
+      from: 35,
+      to: 42,
+      step: 0.1
+    },
+    url: 'temperature'
   }
 ];
-const ip = '10.250.162.2';
+const ip = '10.250.194.29';
 const port = '3000';
 export const API = {
   base: `http://${ip}:${port}/api/`,

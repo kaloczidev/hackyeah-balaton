@@ -23,6 +23,9 @@ export default class HomeScreen extends Component {
               this.props.navigation.navigate('type', {config: item});
             }}/>;
           })}
+          <View style={{padding: 60}}>
+            <Text style={{color: VALUES.colors.black, textAlign: 'center'}}>Add new</Text>
+          </View>
           </View>
         </View>
       </SafeAreaView>
