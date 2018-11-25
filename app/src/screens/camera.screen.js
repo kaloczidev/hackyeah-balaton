@@ -63,7 +63,7 @@ export default class CameraScreen extends Component {
   render() {
     const { state, navigate, pop } = this.props.navigation;
     const { color, url } = state.params.config;
-
+    const setByCamera = state.params.setByCamera;
     return (
       <SafeAreaView style={{ ...styles.view }}>
         <View
@@ -103,10 +103,10 @@ export default class CameraScreen extends Component {
                 backgroundColor: "transparent",
                 flex: 1,
                 width: Dimensions.get('window').width,
-                borderWidth: 50,
-                borderTopWidth: 100,
-                borderBottomWidth: 100,
-                borderColor: "rgba(0,0,0,0.7)"
+                borderWidth: 80,
+                borderTopWidth:  Dimensions.get('window').width / 5 * 2,
+                borderBottomWidth:  Dimensions.get('window').width / 5 * 2,
+                borderColor: "rgba(0,0,0,0.85)"
               }}
             />
           </RNCamera>
@@ -155,6 +155,42 @@ export default class CameraScreen extends Component {
               }}
             >
               Scan
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+         <TouchableOpacity
+          style={{
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+          onPress={() => {
+            setByCamera(11.3);
+          }}
+        >
+          <View
+            style={{
+              padding: 20,
+              marginTop: -33,
+              marginBottom: 40,
+              backgroundColor: color,
+              borderRadius: 100,
+              shadowColor: VALUES.colors.black,
+              shadowOffset: { width: 0, height: 6 },
+              shadowOpacity: 0.3,
+              shadowRadius: 4
+            }}
+          >
+            <Text
+              style={{
+                fontSize: VALUES.fontSizes.title,
+                textAlign: "center",
+                color: VALUES.colors.white,
+                paddingLeft: 30,
+                paddingRight: 30
+              }}
+            >
+              accept
             </Text>
           </View>
         </TouchableOpacity>

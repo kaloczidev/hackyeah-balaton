@@ -10,10 +10,35 @@ import {
 import LinearGradient from "react-native-linear-gradient";
 
 import { STYLES, VALUES } from "../styles";
+import { API } from "../config";
 
 const { Text, View } = Animated;
 
 export default class ValueTypeCard extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      recent: 0,
+      avarage: 0,
+    }
+  }
+
+  componentDidMount () {
+    fetch(API.base+'measurements'+'?type='+this.props.config.url)
+    .then(r => r.json())
+    .then( r => {
+      let s = 0;
+      r.forEach(i => s+=i.value);
+      this.setState({
+        recent: r[0].value,
+        avarage: Math.round(s / r.length * 10) / 10
+      });
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  }
   render() {
     const { name, unit, categories, color, gradient } = this.props.config;
     return (
@@ -33,7 +58,10 @@ export default class ValueTypeCard extends Component {
           >
             <Text style={{ ...styles.header }}>{name}</Text>
             <View>
-              <Text>5,6</Text>
+              <Text style={styles.recent}>{this.state.avarage}</Text>
+            </View>
+            <View>
+              <Text style={styles.avarage}>recent: {this.state.recent}</Text>
             </View>
           </LinearGradient>
         </TouchableOpacity>
@@ -50,10 +78,22 @@ const styles = StyleSheet.create({
     shadowColor: VALUES.colors.black,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.3,
-    height: 110
+    height: 110,
+    position: 'relative'
   },
   header: {
     fontSize: VALUES.fontSizes.title,
     color: VALUES.colors.white
+  },
+  recent: {
+    fontSize: 56,
+    color: VALUES.colors.white
+  },
+  avarage: {
+    opacity: .7,
+    color: VALUES.colors.white,
+    position: 'absolute',
+    right: 0,
+    top: -90
   }
 });

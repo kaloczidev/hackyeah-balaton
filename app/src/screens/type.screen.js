@@ -33,6 +33,17 @@ export default class TypeScreen extends Component {
       history: [],
       selectedCategory: 0
     };
+    this.picker = React.createRef();
+
+    this.setByCamera = this.setByCamera.bind(this);
+  }
+  
+  setByCamera( value ){
+
+    this.state.itemList.indexOf(value)
+    this.setState({
+      selectedItem: this.state.itemList.indexOf(value+'')
+    });
   }
 
   componentDidMount() {
@@ -60,13 +71,45 @@ export default class TypeScreen extends Component {
     this.ActionSheet.show();
   };
 
+  save () {
+    console.log('saving...');
+    const { state, navigate, pop } = this.props.navigation;
+    const { config } = state.params;
+    const {
+      name,
+      unit,
+      url
+    } = state.params.config;
+    const target = API.base + "measurements";
+    fetch(target, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify({
+        type: url,
+        value: this.state.itemList[this.state.selectedItem],
+        date: moment().unix()
+      })
+    })
+      .then(r => r.json())
+      .then(r => {
+        console.log('added', r);
+        this.loadItems();
+      })
+      .catch(e => {
+        console.log("szopol");
+        console.log(e);
+      });
+  }
+
   async loadItems() {
     const target = API.base + "measurements?type=";
 
     await fetch(target + this.props.navigation.state.params.config.url)
       .then(r => r.json())
       .then(r => {
-        console.log(r);
+        r.sort((a, b) => moment(a).unix() < moment(b).unix());
         this.setState({
           history: r
         });
@@ -89,7 +132,6 @@ export default class TypeScreen extends Component {
       gradient
     } = state.params.config;
     const options = [...categories, '',"cancel"];
-    console.log(options);
     return (
       <SafeAreaView style={{ ...styles.view }}>
         <View
@@ -137,13 +179,14 @@ export default class TypeScreen extends Component {
             </Text>
 
             <Picker
+              ref={this.picker}
               style={{ height: 143, overflow: "hidden" }}
               selectedValue={this.state.selectedItem}
               itemStyle={styles.value}
               onValueChange={index => this.onPickerSelect(index)}
             >
               {this.state.itemList.map((value, i) => (
-                <Text label={value} value={i} key={"k" + i} />
+                <Text label={value} value={i} key={"k" + (i + Math.random()*100)} />
               ))}
             </Picker>
 
@@ -203,8 +246,8 @@ export default class TypeScreen extends Component {
                   color: VALUES.colors.white,
                   borderBottomWidth: 1,
                   borderBottomColor: VALUES.colors.white,
-                  paddingLeft: 30,
-                  paddingRight: 30,
+                  paddingLeft: 5,
+                  paddingRight: 5,
                 }}
               >
                 {options[this.state.selectedCategory]}
@@ -218,7 +261,7 @@ export default class TypeScreen extends Component {
                 justifyContent: 'center'
               }}
               onPress={() => {
-                navigate('camera', {config: config});
+                navigate('camera', {config: config, setByCamera: this.setByCamera});
               }}
             >
             <View  style={{
@@ -251,7 +294,11 @@ export default class TypeScreen extends Component {
               ...{ backgroundColor: VALUES.colors.white }
             }}
           >
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => {
+              this.save();
+              
+            }}
+            >
               <View style={styles.saveButton}>
                 <Text style={styles.saveButtonText}>Save</Text>
               </View>
@@ -267,7 +314,7 @@ export default class TypeScreen extends Component {
             </Text>
             {this.state.history.map((value, i) => {
               return (
-                <View style={{ ...styles.historyItem }} key={"history" + i}>
+                <View style={{ ...styles.historyItem }} key={"history"+value.value+ (i + Math.random()*100)}>
                   <Text
                     style={{
                       fontSize: 18,
@@ -315,6 +362,7 @@ const styles = StyleSheet.create({
     color: VALUES.colors.white
   },
   saveButton: {
+    zIndex: 111,
     padding: VALUES.paddingSmall,
     backgroundColor: VALUES.colors.white,
     marginTop: -50,

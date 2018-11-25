@@ -31,7 +31,7 @@ export const TYPECONFIG = [
     url: 'weight'
   }
 ];
-const ip = '10.250.194.13';
+const ip = '10.250.162.2';
 const port = '3000';
 export const API = {
   base: `http://${ip}:${port}/api/`,
