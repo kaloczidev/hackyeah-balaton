@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
 from cv2.cv2 import imdecode, IMREAD_COLOR
-from numpy import fromstring
+from numpy import fromstring, uint8
 
 from src.digit_utils import get_digits_from_digit_contours
 from src.image_context import ImageContext
@@ -9,11 +9,13 @@ from src.image_utils import get_contours_of_image, \
     get_digit_contours
 from src.utils import get_digit_map, load_image
 
+
 def data_to_img(uri):
     encoded_data = uri.split(',')[1]
-    nparr = fromstring(encoded_data.decode('base64'), np.uint8)
+    nparr = fromstring(encoded_data.decode('base64'), uint8)
     img = imdecode(nparr, IMREAD_COLOR)
     return img
+
 
 if __name__ == "__main__":
     try:
