@@ -9,7 +9,7 @@ import * as path from 'path';
 
 const OUTFILE = 'out.jpg';
 const TESSDATA_PREFIX = path.resolve(__dirname, '..', '..', '..', 'letsgodigital/');
-const TESSERACT_COMMAND = 'cat ' + OUTFILE + ' | tesseract stdin stdout -l letsgodigital';
+const TESSERACT_COMMAND = 'cat ' + OUTFILE + ' | tesseract stdin stdout -l letsgodigital --dpi 75';
 
 @Injectable()
 export class MeasurementService {
@@ -29,11 +29,15 @@ export class MeasurementService {
   }
 
   add(measurement: Partial<Measurement>): Measurement {
-
     if (measurement.image) {
-      measurement.value = this.getValue(measurement.image);
+      const value = this.getValue(measurement.image);
 
-      //clean image from the DB
+      if (!value) {
+        return <Measurement>Object.assign(measurement, {value: null});
+      }
+
+      //save and clean
+      measurement.value = value;
       delete measurement.image;
     }
 
@@ -50,8 +54,10 @@ export class MeasurementService {
 
   private getValue(data): any {
     fs.writeFileSync(OUTFILE, data, 'base64');
+    const recogniser = shell.exec('python3 ../recognition/__main2__.py --path ' + OUTFILE, {silent: true});
     const exec = shell.exec('export TESSDATA_PREFIX=' + TESSDATA_PREFIX + '; ' + TESSERACT_COMMAND, {silent: true});
-    console.log(exec);
+
+    console.log(recogniser);
     return exec.stdout.trim();
   }
 }
