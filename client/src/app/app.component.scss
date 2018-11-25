@@ -17,6 +17,7 @@
   font-weight: 300;
   text-shadow: -1px -1px 1 darken($color-darkGray-dark, 100);
   border-right: 1px solid $color-lightGray-dark;
+  text-align: center;
 
   .sidebar-header {
     background: $color-aqua-dark;
@@ -36,4 +37,34 @@
   min-height: 100px;
   overflow: auto;
   padding: 12px;
+}
+
+.data-table {
+  border-collapse: collapse;
+  text-align: left;
+  border-top: 1px solid $color-darkGray-light;
+
+  tr:first-child {
+    td {
+      padding-top: 20px;
+    }
+  }
+
+  td {
+    padding: 2px 12px;
+  }
+}
+
+.data-row {
+  .mdi {
+    font-size: 24px;
+  }
+
+  .data-row-label {
+    font-weight: 700;
+  }
+
+  .data-row-value {
+    font-weight: 300;
+  }
 }
