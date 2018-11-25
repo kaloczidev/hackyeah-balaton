@@ -1,13 +1,26 @@
+@import '~@mdi/font/css/materialdesignicons.min.css';
 @import 'styles/colors';
 
 body, html {
   margin: 0;
   padding: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-family: 'Source Sans Pro', sans-serif;
+  width: 100%;
+  height: 100%;
+  //font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   background: $color-lightGray-light;
   color: $color-darkGray-dark;
   user-select: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 42px;
+  margin: 0;
+  padding: 12px 0;
 }

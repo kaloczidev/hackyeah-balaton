@@ -1,12 +1,33 @@
 <div class="layout">
   <div class="sidebar">
-    blood type: 0rh+<br>
-    gender: male
+    <div class="sidebar-header">
+      <span style="font-size: 100px" class="mdi mdi-test-tube"></span><br>
+    </div>
+
+    <app-gauge-chart [value]="10" label="current"></app-gauge-chart>
+    <br>
+    <app-gauge-chart [value]="34" label="optimal"></app-gauge-chart>
+    <br>
+    <app-gauge-chart [value]="89"></app-gauge-chart>
+    <br>
+
+    <span style="font-size: 24px" class="mdi mdi-gender-male-female"></span>gender: male<br>
+    <span style="font-size: 24px" class="mdi mdi-gender-male-female"></span>blood: 0rh+<br>
+    <span style="font-size: 24px" class="mdi mdi-cake-variant"></span>age: 35<br>
   </div>
+
   <div class="main">
-    <app-box>
-      <app-gauge-chart></app-gauge-chart>
+    <app-box style="width: 45%">
+      <h1>Glucose</h1>
+      <app-line-chart [color]="'#b00035'" startColor="rgb(249, 74, 58)" endColor="rgb(229, 47, 101)" [data]="glucose | async"></app-line-chart>
     </app-box>
-    <app-line-chart [data]="data | async"></app-line-chart>
+    <app-box style="width: 45%">
+      <h1>Weight</h1>
+      <app-line-chart [color]="'#1d4369'" startColor="rgb(67, 206, 162)" endColor="#185a9d" [data]="weight | async"></app-line-chart>
+    </app-box>
+    <app-box style="width: 45%">
+      <h1>Temperature</h1>
+      <app-line-chart startColor="rgba(249, 74, 58, 1)" endColor="rgba(229, 47, 101, 1)" [data]="thermo | async"></app-line-chart>
+    </app-box>
   </div>
 </div>

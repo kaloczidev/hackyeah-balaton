@@ -33,9 +33,9 @@ $gauge-size: 150px;
 
   mwl-gauge > .gauge > .value-text {
     font-family: inherit;
-    fill: $color-darkGray-dark;
+    fill: $color-lightGray-light;
     font-weight: 300;
-    transform: translate(0, 10px);
-    font-size: 38px;
+    transform: translate(0, 12px);
+    font-size: 36px;
   }
 }

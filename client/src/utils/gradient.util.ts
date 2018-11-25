@@ -11,7 +11,7 @@ export class GradientUtil {
     this.canvas.width = width;
     this.canvas.height = height;
 
-    const gradientFill = this.ctx.createLinearGradient(width / 2, 0, height / 2, 0);
+    const gradientFill = this.ctx.createLinearGradient(500, 0, 100, 0);
     gradientFill.addColorStop(0, startColor);
     gradientFill.addColorStop(1, endColor);
     return gradientFill;

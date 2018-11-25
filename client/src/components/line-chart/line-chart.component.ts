@@ -37,11 +37,11 @@ export class LineChartComponent {
     },
     elements: {
       line: {
-        borderColor: '#b00035',
+        borderColor: '#000',
         borderWidth: 2,
       },
       point: {
-        borderColor: '#b00035',
+        borderColor: '#000Ł',
         borderWidth: 2,
         radius: 4,
         hoverRadius: 4
@@ -54,8 +54,16 @@ export class LineChartComponent {
     datasets: [],
   });
 
+  @Input() startColor: string;
+  @Input() endColor: string;
+
+  @Input() set color(color: string) {
+    this.options.elements.line.borderColor = color;
+    this.options.elements.point.borderColor = color;
+  }
+
   @Input() set data(data: { values: number[], labels: string[] }) {
-    const gradient = new GradientUtil().generate('rgba(249, 74, 58, 1)', 'rgba(229, 47, 101, 1)');
+    const gradient = new GradientUtil().generate(this.startColor, this.endColor);
     this.chartData.next({labels: data.labels, datasets: [{data: data.values, backgroundColor: gradient}]});
   }
 }

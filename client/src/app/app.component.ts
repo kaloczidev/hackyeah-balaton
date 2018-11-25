@@ -14,13 +14,15 @@ import { MeasurementType } from '../enums/measurement-type.enum';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  data = new BehaviorSubject({labels: [], values: []});
+  glucose = new BehaviorSubject({labels: [], values: []});
+  thermo = new BehaviorSubject({labels: [], values: []});
+  weight = new BehaviorSubject({labels: [], values: []});
 
   constructor(private http: HttpClient) {
     this.http.get(`${API_HOST}/api/measurements`).subscribe((response: any[]) => {
-      const data = DataUtil.prepare(response, MeasurementType.GLUCOSE);
-      this.data.next(data);
-      console.log(response, data);
+      this.glucose.next(DataUtil.prepare(response, MeasurementType.GLUCOSE));
+      this.thermo.next(DataUtil.prepare(response, MeasurementType.THERMO));
+      this.weight.next(DataUtil.prepare(response, MeasurementType.WEIGHT));
     });
   }
 }
