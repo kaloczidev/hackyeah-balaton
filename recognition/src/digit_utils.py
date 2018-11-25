@@ -1,4 +1,4 @@
-from cv2.cv2 import boundingRect, countNonZero
+from cv2 import boundingRect, countNonZero
 
 
 def get_digits_from_digit_contours(digit_map, digit_contours, threshold):
@@ -15,10 +15,12 @@ def get_digits_from_digit_contours(digit_map, digit_contours, threshold):
         segments = _get_segments(w, h, int(roiH * 0.15), int(roiW * 0.25), int(roiH * 0.05))
         visible_segments = _get_visible_segments_from_segments(roi, segments)
         # lookup the digit and draw it on the image
-        digit = tuple(visible_segments)
+        digit = digit_map.get(tuple(visible_segments))
+        print(visible_segments)
+        print(digit)
+        if digit is not None:
         # print(digit)
-        yield digit
-
+            yield digit
 
 
 def _get_visible_segments_from_segments(roi, segments):

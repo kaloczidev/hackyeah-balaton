@@ -1,7 +1,7 @@
 import os
 from json import load
 
-from cv2.cv2 import imread
+from cv2 import imread
 
 DIGITS_PATH = os.path.abspath(
     os.path.join(
